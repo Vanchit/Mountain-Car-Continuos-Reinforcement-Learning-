@@ -45,11 +45,7 @@ Edit `config.py` to adjust:
 - Learning rate
 - Batch size
 
-## Monitor Training
 
-```bash
-tensorboard --logdir=logs/
-```
 
 ## References
 
