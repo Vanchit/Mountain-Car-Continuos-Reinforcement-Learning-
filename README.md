@@ -1,58 +1,49 @@
 # Mountain Car Continuous - Reinforcement Learning
 
-A reinforcement learning project for solving Mountain Car Continuous using Stable-Baselines3 and Gymnasium.
+**An agent learning to climb a mountain using Reinforcement Learning (RL) techniques.**
 
-## Quick Start
+## 🎯 Project Goal
+
+Train an AI agent to autonomously solve the **Mountain Car Continuous** problem - driving a car up a steep hill by learning optimal strategies through trial and error, without explicit programming.
+
+## 🚗 What Is Mountain Car?
+
+- **Environment**: A car at the bottom of a sinusoidal valley
+- **Challenge**: Engine is too weak to climb directly - must swing back and forth
+- **Goal**: Reach the top of the right hill (position ≥ 0.45)  
+- **Learning**: Agent discovers the swing strategy through RL
+
+## 🤖 How It Works
+
+1. **Agent**: Uses SAC (Soft Actor-Critic) algorithm
+2. **Learning**: Trained on 200,000 timesteps via trial and error
+3. **Strategy**: Learns to swing left-right to build momentum
+4. **Result**: Autonomous climbing behavior
+
+## ⚡ Quick Start
 
 ```bash
-# Install dependencies
 pip install -r requirements.txt
 
-# Train agent
+# Train agent to climb mountain
 python train.py
 
-# Evaluate
-python evaluate.py
+# See how it performs
+python demo.py
 
-# Visualize results
+# Watch it in action
+python animate.py
+
+# Analyze with plots
 python visualize.py
 ```
 
-## Project Files
+## 📊 Project Structure
 
-- `config.py` - Hyperparameters and settings
-- `train.py` - Training script
-- `evaluate.py` - Model evaluation
-- `visualize.py` - Result visualization
-- `models/` - Trained models
-- `logs/` - TensorBoard logs
-
-## Problem Description
-
-**Goal**: Drive a car up a sinusoidal valley to reach the top right hill (position ≥ 0.45)
-
-**State Space**: Position [-1.2, 0.6] and Velocity [-0.07, 0.07]
-
-**Action Space**: Continuous force in [-1, 1]
-
-**Expected Results**: 80-100% success rate with ~200-500 steps per episode
-
-## Configuration
-
-Edit `config.py` to adjust:
-- Algorithm: "SAC", "PPO", "DDPG"
-- Training timesteps
-- Learning rate
-- Batch size
-
-## Monitor Training
-
-```bash
-tensorboard --logdir=logs/
-```
-
-## References
-
-- [Gymnasium Docs](https://gymnasium.farama.org/)
-- [Stable-Baselines3 Docs](https://stable-baselines3.readthedocs.io/)
-- [PPO Paper](https://arxiv.org/abs/1707.06347)
+- `train.py` - Training loop
+- `demo.py` - Live demonstration
+- `evaluate.py` - Performance testing
+- `visualize.py` - Result plots
+- `config.py` - Settings
+- `models/` - Trained agents
+- `logs/` - Training metrics
