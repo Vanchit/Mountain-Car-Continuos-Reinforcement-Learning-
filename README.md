@@ -47,3 +47,9 @@ python visualize.py
 - `config.py` - Settings
 - `models/` - Trained agents
 - `logs/` - Training metrics
+
+## 📚 References
+
+- [Gymnasium Docs](https://gymnasium.farama.org/)
+- [Stable-Baselines3 Docs](https://stable-baselines3.readthedocs.io/)
+- [PPO Paper](https://arxiv.org/abs/1707.06347)
