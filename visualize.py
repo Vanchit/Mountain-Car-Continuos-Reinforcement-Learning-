@@ -139,13 +139,19 @@ def main():
     print("Mountain Car Continuous - Visualization")
     print("=" * 60)
     
-    # Load model
+    # Load model - try final model first, then best model
     model_path = config.MODELS_DIR / f"{config.ALGORITHM.lower()}_mountain_car_continuous_final"
     
     if not (Path(model_path).with_suffix(".zip")).exists():
-        print(f"Error: Model not found at {model_path}.zip")
-        print(f"Please train a model first using train.py")
-        return
+        # Try best model as fallback
+        best_model_path = config.MODELS_DIR / "best_model"
+        if (Path(best_model_path).with_suffix(".zip")).exists():
+            model_path = best_model_path
+            print(f"Final model not found, using best_model.zip")
+        else:
+            print(f"Error: Model not found at {model_path}.zip")
+            print(f"Please train a model first using train.py")
+            return
     
     print(f"Loading model from: {model_path}.zip")
     algo_lower = config.ALGORITHM.lower()

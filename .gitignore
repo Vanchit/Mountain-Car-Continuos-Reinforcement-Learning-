@@ -1,0 +1,7 @@
+# Ignore animation frames and large generated assets
+animation_frames/
+*.gif
+*.mp4
+__pycache__/
+.vscode/
+models/*.zip

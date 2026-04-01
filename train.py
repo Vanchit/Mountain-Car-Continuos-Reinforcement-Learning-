@@ -18,7 +18,7 @@ def create_environment(render_mode=None):
 
 def train_agent(algorithm="SAC", total_timesteps=None, learning_rate=None):
     """
-    Train an RL agent on Mountain Car Continuous.
+    Train an RL agent on Mountain Car Continuous using reinforcement learning.
     
     Args:
         algorithm (str): Algorithm to use (e.g., "SAC", "DDPG", "PPO")
@@ -33,7 +33,7 @@ def train_agent(algorithm="SAC", total_timesteps=None, learning_rate=None):
     if learning_rate is None:
         learning_rate = config.LEARNING_RATE
     
-    print(f"Creating environment: {config.ENV_ID}")
+    print(f"Creating Mountain Car Continuous environment: {config.ENV_ID}")
     env = gym.make(config.ENV_ID, render_mode=None)
     
     print(f"Initializing {algorithm} agent for Mountain Car...")

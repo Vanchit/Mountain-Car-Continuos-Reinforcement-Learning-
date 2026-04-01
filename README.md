@@ -1,55 +1,67 @@
 # Mountain Car Continuous - Reinforcement Learning
 
-**An agent learning to climb a mountain using Reinforcement Learning (RL) techniques.**
+**An agent learning to climb a mountain using Reinforcement Learning (SAC algorithm).**
 
-## 🎯 Project Goal
+## 🚗 What Is This?
 
-Train an AI agent to autonomously solve the **Mountain Car Continuous** problem - driving a car up a steep hill by learning optimal strategies through trial and error, without explicit programming.
+A trained AI agent that learns to drive a car up a steep hill using **Soft Actor-Critic (SAC)** reinforcement learning algorithm. The car:
+- Starts at the bottom of a valley (position = -1.2)
+- Cannot climb directly (weak engine)
+- **Learns through trial and error** to swing back and forth
+- **Reaches the goal** at the top (position ≥ 0.45)
 
-## 🚗 What Is Mountain Car?
+**Reference:** https://gymnasium.farama.org/environments/classic_control/mountain_car_continuous/
 
-- **Environment**: A car at the bottom of a sinusoidal valley
-- **Challenge**: Engine is too weak to climb directly - must swing back and forth
-- **Goal**: Reach the top of the right hill (position ≥ 0.45)  
-- **Learning**: Agent discovers the swing strategy through RL
-
-## 🤖 How It Works
-
-1. **Agent**: Uses SAC (Soft Actor-Critic) algorithm
-2. **Learning**: Trained on 200,000 timesteps via trial and error
-3. **Strategy**: Learns to swing left-right to build momentum
-4. **Result**: Autonomous climbing behavior
-
-## ⚡ Quick Start
+## 🎯 Quick Start
 
 ```bash
+# Install dependencies
 pip install -r requirements.txt
 
-# Train agent to climb mountain
+# Train the RL agent (learns to climb mountain)
 python train.py
 
-# See how it performs
-python demo.py
+# Evaluate performance
+python evaluate.py
 
-# Watch it in action
-python animate.py
-
-# Analyze with plots
+# Visualize results
 python visualize.py
 ```
 
-## 📊 Project Structure
+## 📁 Project Structure
 
-- `train.py` - Training loop
-- `demo.py` - Live demonstration
-- `evaluate.py` - Performance testing
-- `visualize.py` - Result plots
-- `config.py` - Settings
-- `models/` - Trained agents
-- `logs/` - Training metrics
+| File | Purpose |
+|------|---------|
+| `train.py` | Trains the RL agent using SAC algorithm |
+| `evaluate.py` | Tests and benchmarks the trained agent |
+| `visualize.py` | Shows trajectory plots and policy analysis |
+| `config.py` | Configuration & hyperparameters |
+| `models/` | Saved trained models |
+| `logs/` | Training metrics & TensorBoard logs |
 
-## 📚 References
+## 🤖 Algorithm: SAC (Soft Actor-Critic)
 
-- [Gymnasium Docs](https://gymnasium.farama.org/)
-- [Stable-Baselines3 Docs](https://stable-baselines3.readthedocs.io/)
-- [PPO Paper](https://arxiv.org/abs/1707.06347)
+**Why SAC?**
+- Excellent exploration with entropy regularization
+- Stable training for continuous control
+- Good for Mountain Car problem
+- Learns optimal swing strategy automatically
+
+**Training Details:**
+- Timesteps: 50,000 (fast training)
+- Learning Rate: 2e-3
+- Batch Size: 128
+- Evaluation Episodes: 5
+
+## 📊 Output Files Generated
+
+After training and visualization:
+- `models/best_model.zip` - Trained agent
+- `trajectory_visualization.png` - Position, velocity, action, reward plots
+- `policy_analysis.png` - Heatmap of learned policy
+
+## 🔗 References
+
+- [Gymnasium Documentation](https://gymnasium.farama.org/)
+- [SAC Algorithm Paper](https://arxiv.org/abs/1801.01290)
+- [Stable-Baselines3](https://stable-baselines3.readthedocs.io/)
